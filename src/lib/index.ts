@@ -1,1 +1,11 @@
-// place files you want to import through the `$lib` alias in this folder.
+type Option = {
+    text: string,
+    votes: number,
+    percentage: number,
+    id: string
+}
+export type PollData = {
+    title: string;
+    description: string;
+    options: Option[]
+};
