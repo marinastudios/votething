@@ -14,7 +14,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		const sessionCookie = cookieController.createBlankCookie()
 		event.cookies.set(sessionCookie.name, sessionCookie.value, {
 			path: '.',
-			...sessionCookie.attributes
+			...sessionCookie.attributes,
 		})
 		event.locals.user = null
 		event.locals.session = null
@@ -24,7 +24,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const sessionCookie = cookieController.createCookie(session.id)
 	event.cookies.set(sessionCookie.name, sessionCookie.value, {
 		path: '.',
-		...sessionCookie.attributes
+		...sessionCookie.attributes,
 	})
 	event.locals.user = user
 	event.locals.session = session

@@ -1,9 +1,10 @@
-import ids from "$lib/ids";
+import ids from '$lib/ids'
 
 function matchesAlphabet(target: string, alphabet: string) {
-    const escapedB = alphabet.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
-    const regex = new RegExp(`^[${escapedB}]*$`);
-    return regex.test(target);
+	const escapedB = alphabet.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+	const regex = new RegExp(`^[${escapedB}]*$`)
+	return regex.test(target)
 }
 
-export const match = (p: string) => p.startsWith('~') && matchesAlphabet(p.slice(1), ids.poll_alphabet) && p.length === 21
+export const match = (p: string) =>
+	p.startsWith('~') && matchesAlphabet(p.slice(1), ids.poll_alphabet) && p.length === 21

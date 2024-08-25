@@ -1,4 +1,6 @@
-import api from "$lib/api";
-import { Hono } from "hono";
+import api from '$lib/api'
+import { Hono } from 'hono'
+import { logger } from 'hono/logger'
 
-export default new Hono().route('/api', api)
+export interface Bindings { Bindings: App.Locals }
+export default new Hono<Bindings>().use(logger()).route('/api', api)

@@ -13,6 +13,7 @@
 	},
 	"devDependencies": {
 		"@deno/kv": "^0.8.1",
+		"@hono/zod-validator": "^0.2.2",
 		"@olli/kvdex": "npm:@jsr/olli__kvdex@^2.0.2",
 		"@oxi/option": "npm:@jsr/oxi__option@^0.2.0",
 		"@oxi/result": "npm:@jsr/oxi__result@^0.3.1",

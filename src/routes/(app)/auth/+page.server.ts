@@ -13,7 +13,7 @@ const schema = z.object({
 		.min(4, 'must be atleast 4 characters')
 		.max(32, 'must be less than 32 characters')
 		.regex(/^[a-z0-9_-]+$/i, `must be alphanumeric, with the exception of "_" and "-"`),
-	password: z.string().min(8, 'must be atleast 8 characters').max(255)
+	password: z.string().min(8, 'must be atleast 8 characters').max(255),
 })
 
 export async function load({ locals }) {
@@ -39,7 +39,7 @@ export const actions = {
 			const sessionCookie = cookieController.createCookie(session.unwrap().id)
 			cookies.set(sessionCookie.name, sessionCookie.value, {
 				path: '.',
-				...sessionCookie.attributes
+				...sessionCookie.attributes,
 			})
 			return redirect(302, '/dash')
 		} else {
@@ -58,18 +58,18 @@ export const actions = {
 		if (user) return setError(form, 'login', 'username already exists')
 		await db.auth.user.set(userId, {
 			login,
-			passwordHashed
+			passwordHashed,
 		})
 		const session = await createSessionForUser(userId)
 		if (session.isSome()) {
 			const sessionCookie = cookieController.createCookie(session.unwrap().id)
 			cookies.set(sessionCookie.name, sessionCookie.value, {
 				path: '.',
-				...sessionCookie.attributes
+				...sessionCookie.attributes,
 			})
 			return redirect(302, '/dash')
 		} else {
 			return fail(500, { form })
 		}
-	}
+	},
 }

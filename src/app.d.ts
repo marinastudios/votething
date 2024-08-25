@@ -7,13 +7,13 @@ import z from 'zod'
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
 		interface Locals {
-			user: FlatDocumentData<z.infer<typeof schema.user>, string> | null
-			session: FlatDocumentData<z.infer<typeof schema.session>, string> | null
+			user: FlatDocumentData<z.infer<typeof schema.auth.user>, string> | null
+			session: FlatDocumentData<z.infer<typeof schema.auth.session>, string> | null,
+			poll?: FlatDocumentData<z.infer<typeof schema.poll>> | null
 		}
 	}
 }

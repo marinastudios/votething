@@ -1,9 +1,10 @@
 <script lang="ts">
-	import type { PollData } from '$lib/client/polldata.svelte';
+	import type { PollData } from '$lib/client/polldata.svelte'
 	let {
 		poll,
-		'selected-option': selectedOption = $bindable()
-	}: { poll: PollData; ['selected-option']: string } = $props();
+		'selected-option': selectedOption = $bindable(),
+		readonly,
+	}: { poll: PollData; ['selected-option']: string; readonly: boolean } = $props()
 </script>
 
 <div class="flex !w-full flex-row items-center justify-center">
@@ -15,15 +16,16 @@
 		<div class="h-4"></div>
 		{#each poll.options as option (option.id)}
 			<button
-				class="group btn z-[1] px-0"
-				onclick={() => (selectedOption = option.id)}
+				class="group z-[1] px-0"
+				onclick={() => !readonly && (selectedOption = option.id)}
 				class:btn-active={selectedOption === option.id}
-			>
+				class:btn={!readonly}
+				class:fake-btn={readonly}>
 				<div class="relative flex h-full w-full">
 					<div
 						class="absolute bottom-0 left-0 top-0 -z-[1] flex w-full rounded-lg bg-success/45 transition-[width] duration-500 group-[.btn-active]:bg-success/70"
-						style="width: {option.percentage}%"
-					></div>
+						style="width: {option.percentage}%">
+					</div>
 					<div class="flex h-full w-full items-center justify-center px-2">
 						<span class="flex-grow text-left">{option.text}</span>
 						<span class="countdown">
@@ -60,3 +62,10 @@
 	</button> -->
 	</div>
 </div>
+
+<style lang=postcss>
+	.fake-btn {
+		@apply inline-flex h-12 gap-2 bg-neutral bg-opacity-20 px-0 text-opacity-20 outline-base-content transition-all duration-200;
+		border: var(--border-btn, 1px)
+	}
+</style>
