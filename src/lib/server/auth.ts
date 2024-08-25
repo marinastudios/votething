@@ -44,8 +44,8 @@ async function getUserAndSession(sessionId: string): Promise<
 	return Some({ user, session })
 }
 
-export const cookieExpiration = new TimeSpan(365 * 2, 'd')
-export const cookieController = new CookieController(
+export const sessionCookieExpiration = new TimeSpan(365 * 2, 'd')
+export const sessionCookieController = new CookieController(
 	'auth_session',
 	{
 		httpOnly: true,
@@ -53,6 +53,18 @@ export const cookieController = new CookieController(
 		sameSite: 'lax',
 		path: '/',
 	},
-	{ expiresIn: cookieExpiration }
+	{ expiresIn: sessionCookieExpiration }
+)
+
+export const fingerprintCookieExpiration = new TimeSpan(365 * 4, 'd')
+export const fingerprintCookieController = new CookieController(
+	'id',
+	{
+		httpOnly: true,
+		secure: true,
+		sameSite: 'lax',
+		path: '/',
+	},
+	{ expiresIn: fingerprintCookieExpiration }
 )
 export { createSessionForUser, deleteSession, getUserAndSession }

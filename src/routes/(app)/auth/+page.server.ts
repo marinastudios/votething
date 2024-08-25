@@ -3,7 +3,7 @@ import { zod } from 'sveltekit-superforms/adapters'
 import { z } from 'zod'
 import { hash, verify } from '@ts-rex/argon2'
 import { db } from '$lib/server/db'
-import { cookieController, createSessionForUser } from '$lib/server/auth'
+import { sessionCookieController, createSessionForUser } from '$lib/server/auth'
 import { redirect } from '@sveltejs/kit'
 import ids from '$lib/ids'
 
@@ -36,7 +36,7 @@ export const actions = {
 		if (!isvalid) return setError(form, 'incorrect password')
 		const session = await createSessionForUser(user.id)
 		if (session.isSome()) {
-			const sessionCookie = cookieController.createCookie(session.unwrap().id)
+			const sessionCookie = sessionCookieController.createCookie(session.unwrap().id)
 			cookies.set(sessionCookie.name, sessionCookie.value, {
 				path: '.',
 				...sessionCookie.attributes,
@@ -62,7 +62,7 @@ export const actions = {
 		})
 		const session = await createSessionForUser(userId)
 		if (session.isSome()) {
-			const sessionCookie = cookieController.createCookie(session.unwrap().id)
+			const sessionCookie = sessionCookieController.createCookie(session.unwrap().id)
 			cookies.set(sessionCookie.name, sessionCookie.value, {
 				path: '.',
 				...sessionCookie.attributes,

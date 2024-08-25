@@ -12,7 +12,7 @@ declare global {
 		// interface Platform {}
 		interface Locals {
 			user: FlatDocumentData<z.infer<typeof schema.auth.user>, string> | null
-			session: FlatDocumentData<z.infer<typeof schema.auth.session>, string> | null,
+			session: FlatDocumentData<z.infer<typeof schema.auth.session>, string> | null
 			poll?: FlatDocumentData<z.infer<typeof schema.poll>> | null
 		}
 	}

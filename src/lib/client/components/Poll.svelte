@@ -16,9 +16,9 @@
 		<div class="h-4"></div>
 		{#each poll.options as option (option.id)}
 			<button
-				class="group z-[1] px-0"
+				class="group z-[1] !border-transparent px-0"
 				onclick={() => !readonly && (selectedOption = option.id)}
-				class:btn-active={selectedOption === option.id}
+				class:btn-active={selectedOption === option.id && !readonly}
 				class:btn={!readonly}
 				class:fake-btn={readonly}>
 				<div class="relative flex h-full w-full">
@@ -36,36 +36,14 @@
 				</div>
 			</button>
 		{/each}
-		<!-- <button class="btn btn-active z-[1] px-0">
-		<div class="relative flex h-full w-full">
-			<div
-				class="bg-success/70 absolute bottom-0 left-0 top-0 -z-[1] flex w-full rounded-lg transition-all duration-500"
-				style="width: 17%"
-			></div>
-			<div class="flex h-full w-full items-center justify-center px-2">
-				<span class="flex-grow text-left">{option.text}</span>
-				<span class="text-base-content/55">{option.votes}</span>
-			</div>
-		</div>
-	</button>
-	<button class="btn z-[1] px-0">
-		<div class="relative flex h-full w-full">
-			<div
-				class="bg-success/45 absolute bottom-0 left-0 top-0 -z-[1] flex w-full rounded-lg transition-all duration-500"
-				style="width: 45%"
-			></div>
-			<div class="flex h-full w-full items-center justify-center px-2">
-				<span class="flex-grow text-left">{option.text}</span>
-				<span class="text-base-content/55">{option.votes}</span>
-			</div>
-		</div>
-	</button> -->
 	</div>
 </div>
 
-<style lang=postcss>
+<style lang="postcss">
 	.fake-btn {
-		@apply inline-flex h-12 gap-2 bg-neutral bg-opacity-20 px-0 text-opacity-20 outline-base-content transition-all duration-200;
-		border: var(--border-btn, 1px)
+		@apply inline-flex h-12 min-h-12 flex-shrink-0 cursor-default select-none flex-wrap items-center justify-center gap-2 bg-neutral bg-opacity-100 px-0 text-center text-[0.875rem] font-semibold leading-4 text-opacity-20 no-underline shadow-sm transition-all duration-200;
+		border-radius: var(--rounded-btn, 0.5rem);
+		background-color: oklch(var(--btn-color, var(--b2)) / var(--tw-bg-opacity));
+		border-width: var(--border-btn, 1px);
 	}
 </style>

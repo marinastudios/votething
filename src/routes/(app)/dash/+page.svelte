@@ -12,13 +12,13 @@
 				description,
 				options,
 				title,
-                doWriteIn
+				doWriteIn,
 			},
 		})
-        const json = await res.json()
-        if(!json.error) {
-            goto(`/~${json.id}`)
-        }
+		const json = await res.json()
+		if (!json.error) {
+			goto(`/~${json.id}`)
+		}
 	}
 </script>
 

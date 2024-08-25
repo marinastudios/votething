@@ -26,7 +26,7 @@
 		],
 		title: 'Lorem Ipsum',
 	}
-    let { data } = $props()
+	let { data } = $props()
 </script>
 
-<Poll {poll} readonly />
+<Poll {poll} />
