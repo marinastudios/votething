@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PollData } from '$lib';
+	import type { PollData } from '$lib/client/polldata.svelte';
 	let {
 		poll,
 		'selected-option': selectedOption = $bindable()
@@ -21,7 +21,10 @@
 				></div>
 				<div class="flex h-full w-full items-center justify-center px-2">
 					<span class="flex-grow text-left">{option.text}</span>
-					<span class="text-base-content/55">{option.votes}</span>
+					<span class="countdown">
+                        <span style="--value:{Math.min(option.votes, 99)};"></span>
+                        {#if option.votes > 99}+{/if}
+                    </span>
 				</div>
 			</div>
 		</button>

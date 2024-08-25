@@ -12,9 +12,14 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@deno/kv": "^0.8.1",
+		"@olli/kvdex": "npm:@jsr/olli__kvdex@^2.0.2",
+		"@oxi/option": "npm:@jsr/oxi__option@^0.2.0",
+		"@oxi/result": "npm:@jsr/oxi__result@^0.3.1",
+		"@petamoriken/float16": "npm:@jsr/petamoriken__float16@^3.8.7",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@ts-rex/argon2": "npm:@jsr/ts-rex__argon2@^1.0.3",
 		"@types/eslint": "^9.6.0",
 		"autoprefixer": "^10.4.20",
 		"daisyui": "^4.12.10",
@@ -22,15 +27,19 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
+		"nanoid": "^5.0.7",
+		"oslo": "^1.2.1",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"prettier-plugin-tailwindcss": "^0.6.5",
 		"svelte": "^5.0.0-next.1",
 		"svelte-check": "^3.6.0",
+		"sveltekit-adapter-deno": "^0.12.1",
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.3"
+		"vite": "^5.0.3",
+		"zod": "^3.23.8"
 	},
 	"type": "module"
 }
