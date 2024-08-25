@@ -14,13 +14,18 @@ const anon_session = z.object({
 })
 
 const option = z.object({
-    id: z.string()
+    id: z.string(),
+    name: z.string()
 })
 
 const poll = z.object({
     title: z.string(),
     description: z.string(),
-    options: option.array()
+    options: option.array(),
+
+    settings: z.object({
+        do_writeins: z.boolean()
+    })
 })
 
 export default {

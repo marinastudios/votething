@@ -19,6 +19,7 @@
 		"@petamoriken/float16": "npm:@jsr/petamoriken__float16@^3.8.7",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@thumbmarkjs/thumbmarkjs": "^0.14.8",
 		"@ts-rex/argon2": "npm:@jsr/ts-rex__argon2@^1.0.3",
 		"@types/eslint": "^9.6.0",
 		"autoprefixer": "^10.4.20",

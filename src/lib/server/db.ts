@@ -18,7 +18,8 @@ export const db = kvdex(kv, {
         }),
         anon_session: collection(schema.auth.anon_session, {
             indices: {
-                poll_id: 'secondary'
+                poll_id: 'secondary',
+                visitor_id: 'secondary',
             }
         })
     },
